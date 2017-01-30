@@ -1,6 +1,8 @@
 var program = require('commander')
 var args = process.argv;
 var flagsPresent = [];
+var appsum = require('./appsum.js')
+var appproduct = require('./appproduct.js')
 
 program
   .option('-s, --sum', 'sum')
@@ -17,10 +19,10 @@ var isNumber = function(x) {
 var numbers = args.filter(isNumber).map(parseFloat);
 var result;
 if(program.sum){
-  result = numbers.reduce(function(a,b){return a+b});
+  result = appsum.sum(numbers);
 }
 if(program.product){
-  result = numbers.reduce(function(a,b){return a*b});
+  result = appproduct.multiply(numbers);
 }
 console.log("hey")
 console.log("result is %d", result)
